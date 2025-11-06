@@ -1,0 +1,24 @@
+{
+  "name": "mongodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ved prakash",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.20.0",
+    "nodemon": "^3.1.10"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vedprakash7318/MONGODB.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vedprakash7318/MONGODB/issues"
+  },
+  "homepage": "https://github.com/vedprakash7318/MONGODB#readme"
+}
