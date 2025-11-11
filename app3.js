@@ -3,7 +3,8 @@ const http = require("http");
 const fs = require("fs");
 const querystring = require("querystring");
 
-const client = new MongoClient("mongodb://localhost:27017/");
+// const client = new MongoClient("mongodb://localhost:27017/");
+const client = new MongoClient("mongodb+srv://digicodersdevelopment_db_user:PjDsnl8tDErqh8LR@cluster0.2orzcm6.mongodb.net/?appName=Cluster0");
 
 async function insertUser(formData) {
   await client.connect();
@@ -23,7 +24,16 @@ async function showUsers(res) {
 }
 
 const server = http.createServer((req, res) => {
-  
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
+  if (req.method === "OPTIONS") {
+    res.writeHead(200);
+    res.end();
+    return;
+  }
+
   if (req.url === "/" && req.method === "GET") {
     fs.readFile("index.html", (err, data) => {
       res.writeHead(200, { "Content-Type": "text/html" });
@@ -34,12 +44,12 @@ const server = http.createServer((req, res) => {
   }
 
   else if (req.url === "/create" && req.method === "POST") {
-    let body =[];
+    let body = [];
     req.on("data", chunk => body.push(chunk));
     req.on("end", async () => {
-        const rawData=Buffer.concat(body).toString()
+      const rawData = Buffer.concat(body).toString()
       const formData = querystring.parse(rawData);
-      const sendapi=JSON.parse(rawData)
+      const sendapi = JSON.parse(rawData)
       await insertUser(sendapi);
 
       res.writeHead(200, { "Content-Type": "text/html" });
