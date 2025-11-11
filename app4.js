@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
       service: "gmail",
       auth: {
         user: "kripashankark152@gmail.com", 
-        pass: "finhrrjahndnpnpt",   
+        pass: "",   
       },
     });
     let mailOptions = {
